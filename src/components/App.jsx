@@ -1,5 +1,6 @@
 var App = () => (
   <div>
+    <h1>hi steven</h1>
     <Nav />
     <div className="col-md-7">
       <VideoPlayer/>
@@ -9,6 +10,7 @@ var App = () => (
     </div>
   </div>
 );
+
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
