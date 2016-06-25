@@ -13,7 +13,6 @@ var searchYouTube = (options, callback) => {
     TYPE: 'GET',
     data: obj,
     success: function(data) {
-      console.log(data.items);
       callback(data.items);
     },
     error: function(data) {

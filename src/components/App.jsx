@@ -4,6 +4,7 @@ class App extends React.Component {
 
     this.state = {
       curVideo: exampleVideoData[0],
+      searchQuery: null,
       searchList: exampleVideoData
     };
   }
@@ -15,9 +16,12 @@ class App extends React.Component {
   }
 
   onSearch (value) {
-    console.log('searching');
     this.setState({
-      searchList: value
+      searchQuery: value
+    });
+
+    window.searchYouTube({max: 5, query: this.state.value, key: YOUTUBE_API_KEY}, (arr) => {
+      this.setState({searchList: arr});
     });
   }
 
@@ -29,7 +33,7 @@ class App extends React.Component {
           <VideoPlayer video={this.state.curVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList videos={exampleVideoData} onTitleClick={this.onTitleClick.bind(this)}/>
+          <VideoList videos={this.state.searchList} onTitleClick={this.onTitleClick.bind(this)}/>
         </div>
       </div>
     );
