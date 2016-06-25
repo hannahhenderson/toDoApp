@@ -2,10 +2,13 @@ class App extends React.Component {
   constructor (props) {
     super(props);
 
+
+    this.onSearch(`i love kanye`);
+
     this.state = {
       curVideo: exampleVideoData[0],
       searchQuery: null,
-      searchList: exampleVideoData
+      searchList: []
     };
   }
 
@@ -15,13 +18,18 @@ class App extends React.Component {
     });
   }
 
-  onSearch (value) {
-    this.setState({
-      searchQuery: value
-    });
+  componentDidMount() {
+    this.onSearch('cute kittens');
+  }
 
-    window.searchYouTube({max: 5, query: this.state.value, key: YOUTUBE_API_KEY}, (arr) => {
-      this.setState({searchList: arr});
+  onSearch (value) {
+
+    window.searchYouTube({max: 5, query: value, key: YOUTUBE_API_KEY}, (arr) => {
+      this.setState({
+        curVideo: arr[0],
+        searchList: arr,
+        searchQuery: value
+      });
     });
   }
 
@@ -43,38 +51,3 @@ class App extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
-
-
-// class GroceryListItem extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       done: false,
-//       boldHover: false
-//     };
-//   }
-
-//   onListItemClick() {
-//     this.setState({
-//       done: !this.state.done
-//     });
-//   }
-
-//   onListItemHover() {
-//     this.setState({
-//       boldHover: !this.state.boldHover
-//     })
-//   }
-
-//   render() {
-//     var style = {
-//       textDecoration: this.state.done ? 'line-through' : 'none',
-//       fontWeight: this.state.boldHover ? 'bold' : 'normal'
-//     };
-
-//     return (
-//       <li style={style} onClick={this.onListItemClick.bind(this)} onMouseOver={this.onListItemHover.bind(this)}>{this.props.groceries}</li>
-//     );
-//   }
-// }

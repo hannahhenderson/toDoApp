@@ -5,18 +5,18 @@ class Search extends React.Component {
     this.state = {
       searchQuery: null
     };
+
   }
 
   searchInput(event) {
     this.props.onSearch(this.state.searchQuery);
-    console.log('onSearch called from Search.jsx');
   }
 
   enteredInput(event) {
-    this.setState({
-      searchQuery: event.target.value
-    });
-    console.log(event.target.value);
+      this.setState({
+        searchQuery: event.target.value
+      });
+      console.log(event.target.value);
   }
 
   render() {
@@ -36,3 +36,5 @@ class Search extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.Search = Search;
+
+//<input className="form-control" type="text" onChange={this.enteredInput.bind(this)}/>
