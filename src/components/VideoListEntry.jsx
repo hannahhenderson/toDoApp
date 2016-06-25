@@ -1,7 +1,7 @@
 var VideoListEntry = (props) => {
   var clickHelper = () => (
-    props.onTitleClick(props.video)
-  );
+    props.onTitleClick(props.video) // must be contained in an annonymous function
+  );                                // in order to avoid being invoked immediately on call
 
   return (
       <div className="video-list-entry">
