@@ -1,10 +1,6 @@
 class App extends React.Component {
   constructor (props) {
     super(props);
-
-
-    this.onSearch(`i love kanye`);
-
     this.state = {
       curVideo: exampleVideoData[0],
       searchQuery: null,
@@ -24,7 +20,7 @@ class App extends React.Component {
 
   onSearch (value) {
 
-    window.searchYouTube({max: 5, query: value, key: YOUTUBE_API_KEY}, (arr) => {
+    this.props.searchYouTube({max: 5, query: value, key: YOUTUBE_API_KEY}, (arr) => {
       this.setState({
         curVideo: arr[0],
         searchList: arr,

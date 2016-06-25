@@ -16,7 +16,7 @@ class Search extends React.Component {
       this.setState({
         searchQuery: event.target.value
       });
-      console.log(event.target.value);
+      this.props.onSearch(this.state.searchQuery);
   }
 
   render() {
