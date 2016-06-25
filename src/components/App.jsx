@@ -1,6 +1,5 @@
 var App = () => (
   <div>
-    <h1>hi steven</h1>
     <Nav />
     <div className="col-md-7">
       <VideoPlayer/>
