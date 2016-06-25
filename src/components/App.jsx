@@ -35,7 +35,7 @@ class App extends React.Component {
           <VideoPlayer video={this.state.curVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList videos={exampleVideoData} onTitleClick={this.onTitleClick}/>
+          <VideoList videos={exampleVideoData} onTitleClick={this.onTitleClick.bind(this)}/>
         </div>
       </div>
     );
