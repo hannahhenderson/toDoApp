@@ -1,11 +1,12 @@
 var App = () => (
   <div>
+  <h1>Hello, Hannah!</h1>
     <Nav />
     <div className="col-md-7">
       <VideoPlayer/>
     </div>
     <div className="col-md-5">
-      <VideoList/>
+      <VideoList videos={exampleVideoData}/>
     </div>
   </div>
 );
