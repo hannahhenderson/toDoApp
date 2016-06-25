@@ -1,23 +1,10 @@
-// var App = () => (
-//   <div>
-//   <h1>Hello, Hannah!</h1>
-//     <Nav />
-//     <div className="col-md-7">
-//       <VideoPlayer video={exampleVideoData[0]}/>
-//     </div>
-//     <div className="col-md-5">
-//       <VideoList videos={exampleVideoData}/>
-//     </div>
-//   </div>
-// );
-
-
 class App extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      curVideo: exampleVideoData[0]
+      curVideo: exampleVideoData[0],
+      searchList: exampleVideoData
     };
   }
 
@@ -27,10 +14,17 @@ class App extends React.Component {
     });
   }
 
+  onSearch (value) {
+    console.log('searching');
+    this.setState({
+      searchList: value
+    });
+  }
+
   render() {
     return (
       <div>
-        <Nav />
+        <Nav onSearch={this.onSearch.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.curVideo}/>
         </div>
