@@ -13,10 +13,11 @@ class Search extends React.Component {
   }
 
   enteredInput(event) {
-      this.setState({
-        searchQuery: event.target.value
-      });
-      this.props.onSearch(this.state.searchQuery);
+    this.setState({
+      searchQuery: event.target.value
+    });
+    var dumpster = _.debounce(this.props.onSearch.bind(this, this.state.searchQuery), 1000);
+    dumpster();
   }
 
   render() {
@@ -38,3 +39,5 @@ class Search extends React.Component {
 window.Search = Search;
 
 //<input className="form-control" type="text" onChange={this.enteredInput.bind(this)}/>
+
+// (e) => _.debounce(this.enteredInput.bind(this, e), 1000);
